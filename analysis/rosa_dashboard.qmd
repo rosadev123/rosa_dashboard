@@ -1,0 +1,367 @@
+---
+title: "FishFORWRD Database"
+format: 
+  dashboard:
+    embed-resources: true
+    expandable: true
+---
+
+```{r echo=FALSE, message=FALSE, msg = F, warning = F, error = F}
+library(gauntlet)
+library(magrittr)
+library(targets)
+library(tidyverse, quietly = TRUE)
+
+package_load_q = purrr::quietly(gauntlet::package_load)
+
+tmp = c("tibble", "tidyverse", "magrittr","gauntlet"
+        ,"gauntletReactable", "reactable", "reactablefmtr"
+        ,"crosstalk", "plotly"
+        ,"bslib","bsicons", "htmltools", "shiny") %>% 
+  package_load_q()
+```
+
+```{r}
+# setwd(here::here())
+table_height = 500
+
+# source(here::here("code/helpers_skankey.R"))
+```
+
+```{css}
+.navbar {
+background-color: #016FB1;
+}
+
+.cardSpecBig {
+text-align: center;
+font-size: large;
+}
+
+.cardcenter {
+text-align: center;
+}
+
+.cardSpecSmall {
+text-align: center;
+font-size: small;
+}
+```
+
+```{r}
+#note: tar_load can only be called when knitting via targets
+#----- calling targets via tar_load links rpt_tar_object to items 
+# setwd(here::here())
+# tar_load_everything()
+
+#note: tar_load can only be called when knitting via targets
+#----- calling targets via tar_load links rpt_tar_object to items 
+tar_load(data_current_pro)
+tar_load(data_current_srn)
+tar_load(data_needed_pro)
+tar_load(data_srn_pro)
+tar_load(viz_prj_timeline)
+tar_load(viz_proj_location_tree)
+tar_load(viz_smmry_srn_funnel)
+tar_load(viz_smmry_srn_location_tree)
+tar_load(viz_tble_crrnt_proj_shrt)
+tar_load(viz_tble_dcntr_acc)
+tar_load(viz_tble_dcntr_current)
+tar_load(viz_tble_dcntr_def)
+tar_load(viz_tble_dcntr_need)
+tar_load(viz_tble_dcntr_ref)
+tar_load(viz_tble_dcntr_srn)
+
+tar_source()
+# source("R/mk_tble_crrnt_srn_xwalk.R")
+# source("R/mk_special_header.R")
+# source("R/mk_tble_smmry_srn.R")
+
+```
+
+# Welcome Page
+
+## Row {height = "15%"}
+
+::: cardSpecBig
+Welcome to the <strong>FishFORWRD Database</strong>\
+Developed in Partnership by <strong>ROSA</strong>, <strong>Attentive Energy</strong>, and <strong>WSP</strong>\
+![](../docs/rosa_logo.jpg){width="10%"} ![](../docs/ae_log_sm.png){width="10%"} ![](../docs/img-png-wsp-black.png){width="5%"}
+:::
+
+## Row {height="70%"}
+
+### Column {width="60%"}
+
+```{r}
+#| expandable: TRUE
+bslib::card(
+  bslib::card_body(
+    shiny::markdown("
+  <strong>Purpose of this Database</strong><br>
+FishFORWRD is a catalog of all East Coast research, monitoring efforts, and stated research needs for offshore wind, fish, and fisheries. This database differentiates ongoing projects funded to examine offshore wind interactions from other programs that provide valuable data, but which haven't necessarily been designed to assess offshore wind impacts. The objective of FishFORWRD is to increase awareness of ongoing work, avoid duplication of efforts, and create a common understanding of research needs. This tool is meant for research funders, fisheries and offshore wind researchers, offshore wind developers, and the public. 
+
+<strong>How to use this Dashboard</strong><br>
+This dashboard is comprised of a number of tabs, each with their own purpose and functionality with features to help you explore page content or visuals. All tables and plots are interactive and can be manipulated via the mouse. Use this dashboard to explore completed and ongoing research and monitoring efforts, explore research needs expressed by our community, understand which research needs have been funded and are under exploration (under development), and which research gaps still remain (under development). Filter projects and research needs by location, research category, methodology used, funder and more.
+
+<strong>Explanation of Tabs</strong>
+
+<strong>[Current Projects:](#current-projects)</strong> : View completed and ongoing projects with high level attributes. This includes funded research and implemented offshore wind developer Fisheries Monitoring Plans.
+
+<strong>[Database Center:](#database-center)</strong> Interact with raw data and download database directly to your local computer. Find term definitions and references.
+
+<strong>[Submit Project:](#submit-project)</strong> Submit information to update and improve FishFORWRD.
+
+<strong>[Explored Research Needs & Research Gaps Analysis:](#submit-project)</strong> Under Development.")
+  )
+)
+```
+
+### Column {width="15%"}
+
+```{r}
+bslib::value_box(
+  title = "Total Project Count"
+  ,theme = bslib::value_box_theme(bg = "#016FB1", fg = "#e5f0f7")
+  ,value = nrow(data_current_pro)
+  # ,full_screen = F
+)
+```
+
+```{r}
+bslib::value_box(
+  title = "Total Unique Research Categories"
+  ,theme = bslib::value_box_theme(bg = "#016FB1", fg = "#e5f0f7")
+  ,value = length(unique(data_current_pro$research_category))
+    ,full_screen = F
+)
+```
+
+```{r}
+bslib::value_box(
+  title = "Total Identified Needs"
+  ,theme = bslib::value_box_theme(bg = "#016FB1", fg = "#e5f0f7")
+  ,value = nrow(data_needed_pro)
+    ,full_screen = F
+)
+```
+
+### Column {width="15%"}
+
+```{r}
+tt = data_current_pro$developer_fisheries_monitoring_plan
+bslib::value_box(
+  title = HTML("Developer Monitoring Plan Surveys")
+  ,theme = bslib::value_box_theme(bg = "#016FB1", fg = "#e5f0f7")
+  ,value = length(tt[tt == "Yes"])
+)
+```
+
+```{r}
+bslib::value_box(
+  title = HTML("Active East Coast<br>Funding Entities")
+  ,theme = bslib::value_box_theme(bg = "#016FB1", fg = "#e5f0f7")
+  ,value = length(unique(data_current_pro$funder))
+    ,full_screen = F
+)
+```
+
+```{r}
+tt = unique(data_current_pro$methodology)
+bslib::value_box(
+  title = HTML("Types of<br>Methodologies Employed")
+  ,theme = bslib::value_box_theme(bg = "#016FB1", fg = "#e5f0f7")
+  ,value = length(tt[!str_detect(tt, "Undetermined")])
+    ,full_screen = F
+)
+```
+
+## Row {height="10%"}
+
+::: cardSpecSmall
+For support, issue reporting, or for features you'd like to see - contact: `info@rosascience.org`\
+This dashboard was last published: `r Sys.Date()` *`Version 2.1.0`*
+:::
+
+# Current Projects {#current-projects orientation="columns" scrolling="false"}
+
+## Column {width="60%"}
+
+### Row {height="10%"}
+
+```{r}
+bslib::card(full_screen = FALSE
+  # height="200px"
+  ,bslib::card_body(
+    shiny::markdown("Find full project information in Database Center")))
+```
+
+### Row
+
+```{r}
+#| title: "Current Projects Snapshot"
+#| expandable: TRUE
+viz_tble_crrnt_proj_shrt
+```
+
+## Columm_2 {.tabset width="40%"}
+
+```{r}
+#| title: "Project Timelines"
+#| expandable: TRUE
+viz_prj_timeline
+```
+
+```{r}
+#| title: "No. of Projects by Location"
+#| expandable: TRUE
+viz_proj_location_tree
+```
+
+# Explored Research Needs {#explored-research-needs orientation="columns" scrolling="false"}
+
+## Column {width="60%"}
+
+### Row {height="10%"}
+
+```{r}
+bslib::card(full_screen = FALSE
+  # height="200px"
+  ,bslib::card_body(
+    shiny::markdown("Find full project information in Database Center")))
+```
+
+### Row
+
+```{r}
+#| title: "Existing Proj. and SRN XWalk Table"
+#| expandable: TRUE
+
+mk_tble_crrnt_srn_xwalk(data_current_srn, id_sffx = "x")
+```
+
+## Columm_2 {.tabset width="40%"}
+
+```{r}
+#| title: "SRN Summaries"
+#| expandable: TRUE
+data_srn_pro %>%
+  filter(existing_project_addressing_need_id_number != "NULL") %>%
+  mk_tble_smmry_srn(data = ., id_sffx = "ern")
+```
+
+```{r}
+#| title: "SRN Locations"
+#| expandable: TRUE
+viz_smmry_srn_location_tree
+```
+
+```{r}
+#| title: "SRN Project Counts"
+#| expandable: TRUE
+viz_smmry_srn_funnel
+```
+
+# Research Gap Analysis {#research-needs orientation="columns" scrolling="false"}
+
+## Column {width="60%"}
+
+### Row {height="10%"}
+
+```{r}
+bslib::card(full_screen = FALSE
+  # height="200px"
+  ,bslib::card_body(
+    str_glue("This table holds summarized research needs deemed unaddressed.\n
+             Find the full list of all {nrow(data_needed_pro)} Research Needs in Database Center")))
+```
+
+### Row
+
+```{r}
+#| title: "Summarized Research Needs Snapshot"
+#| expandable: TRUE
+data_srn_pro %>%
+  filter(existing_project_addressing_need_id_number == "NULL") %>%
+  mk_tble_smmry_srn(data = ., id_sffx = "gap")
+```
+
+# Database Center {#database-center orientation="rows" scrolling="false"}
+
+##  {.tabset}
+
+```{r}
+#| title: Current Projects
+#| expandable: TRUE
+viz_tble_dcntr_current
+```
+
+```{r}
+#| title: Research Priorities
+#| expandable: TRUE
+viz_tble_dcntr_need
+```
+
+```{r}
+#| title: Smmrzd. Research Needs
+#| expandable: TRUE
+viz_tble_dcntr_srn
+```
+
+```{r}
+#| title: Acronyms List
+#| expandable: TRUE
+viz_tble_dcntr_acc
+```
+
+```{r}
+#| title: Terms Definition
+#| expandable: TRUE
+viz_tble_dcntr_def
+```
+
+```{r}
+#| title: References
+viz_tble_dcntr_ref
+```
+
+##  {.unnumbered}
+
+# Submit Project {#submit-project orientation="columns" scrolling="true"}
+
+```{r}
+bslib::layout_columns(
+  col_widths = 8
+  ,bslib::card(
+    bslib::card_body(
+shiny::markdown("
+<strong>Submit Information to the FishFORWRD Database</strong><br>
+Use the following links to send project information, research needs, or corrections. <br>
+Your submission will be QA/QC'ed and added to the database during our next biannual update.<br>
+
+[Submit a Project](https://forms.office.com/Pages/ResponsePage.aspx?id=Sgw4g3NRqEqxfvY3ZtQHV3vgJdexjgVJvcslYJ4bzAVURFJPM1RQMU9RU0ZLOFAzM0RDMklESkZNRiQlQCN0PWcu 'Please \"Right Click\" and open in new tab')       
+
+[Submit Research Needs](https://forms.office.com/Pages/ResponsePage.aspx?id=Sgw4g3NRqEqxfvY3ZtQHV3vgJdexjgVJvcslYJ4bzAVUQ0lDTk5TOFNLQTRJNENSTENJOTJYSlRCQyQlQCN0PWcu 'Please \"Right Click\" and open in new tab')       
+
+[Provide a Correction](https://forms.office.com/Pages/ResponsePage.aspx?id=Sgw4g3NRqEqxfvY3ZtQHV3vgJdexjgVJvcslYJ4bzAVURUtPREJPV1BUSzFBNFBPQk5DSDZBTEU1OCQlQCN0PWcu 'Please \"Right Click\" and open in new tab')     
+    
+<strong>Additional Resources</strong><br>
+See the links provided below for additional resources.
+
+[RWSC Research Planning Map](https://rwsc.org/map/ 'Please \"Right Click\" and open in new tab')    
+RWSC and ROSA are in the process of developing and populating a web-based map to support offshore wind research planning. The Research Planning Map will display the locations of ongoing offshore wind research activities in U.S. Atlantic waters, including the locations of deployed sensors, survey transects, seafloor mapping footprints, and more. 
+    
+[RWSC Offshore Wind and Wildlife Research Database](https://database.rwsc.org/ 'Please \"Right Click\" and open in new tab')         
+This database holds research projects and data collection activities on wildlife. Specifically marine mammals, birds & bats, sea turtles, habitat & ecosystem, protected fish species. 
+
+[Tethys Knowledge Base for Fish](https://tethys.pnnl.gov/knowledge-base-wind-energy?f%5B0%5D=receptor%3A280 'Please \"Right Click\" and open in new tab')       
+This knowledge base provides access to documents and information from around the world about the environmental effects of wind energy. This link filters these results to “Fish.”
+ 
+[NYSERDA Mitigation Practices Database Tool](https://www.nyetwg.com/mpd-tool 'Please \"Right Click\" and open in new tab')    
+This tool is a searchable database of potential mitigation practices that may be relevant to avoiding, minimizing, offsetting and restoring potential effects of offshore wind energy development on wildlife, the environment, and fisheries.
+")
+    )
+  )
+)
+```
+
