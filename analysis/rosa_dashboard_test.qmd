@@ -1,0 +1,117 @@
+---
+title: "FishFORWRD Database"
+format: 
+  dashboard:
+    embed-resources: true
+    expandable: true
+---
+
+```{r echo=FALSE, message=FALSE, msg = F, warning = F, error = F}
+library(gauntlet)
+library(magrittr)
+library(targets)
+library(tidyverse, quietly = TRUE)
+
+package_load_q = purrr::quietly(gauntlet::package_load)
+
+tmp = c("tibble", "tidyverse", "magrittr","gauntlet"
+        ,"gauntletReactable", "reactable", "reactablefmtr"
+        ,"crosstalk", "plotly"
+        ,"bslib","bsicons", "htmltools", "shiny") %>% 
+  package_load_q()
+```
+
+```{r}
+# setwd(here::here())
+table_height = 500
+
+# source(here::here("code/helpers_skankey.R"))
+```
+
+```{css}
+.navbar {
+background-color: #016FB1;
+}
+
+.cardSpecBig {
+text-align: center;
+font-size: large;
+}
+
+.cardcenter {
+text-align: center;
+}
+
+.cardSpecSmall {
+text-align: center;
+font-size: small;
+}
+```
+
+```{r tar_load}
+#note: tar_load can only be called when knitting via targets
+#----- calling targets via tar_load links rpt_tar_object to items 
+# setwd(here::here())
+# tar_load_everything()
+
+#note: tar_load can only be called when knitting via targets
+#----- calling targets via tar_load links rpt_tar_object to items 
+
+tar_load(viz_tble_smmry_srn)
+tar_load(data_current_srn)
+tar_load(data_srn_pro)
+tar_load(viz_smmry_srn_funnel)
+tar_load(viz_tble_smmry_srn_gap)
+
+tt = list.files("R", full.names = T) %>% 
+  here::here() %>% 
+  map(source)
+# source("R/mk_tble_crrnt_srn_xwalk.R")
+# source("R/mk_special_header.R")
+# source("R/mk_tble_smmry_srn.R")
+
+```
+
+# Explored Research Needs {#explored-research-needs orientation="columns" scrolling="false"}
+
+## Column {width="60%"}
+
+### Row {height="10%"}
+
+```{r}
+bslib::card(full_screen = FALSE
+  # height="200px"
+  ,bslib::card_body(
+    shiny::markdown("Find full project information in Database Center")))
+```
+
+### Row
+
+```{r}
+#| title: "Existing Proj. and SRN XWalk Table"
+#| expandable: TRUE
+
+mk_tble_crrnt_srn_xwalk(data_current_srn, id_sffx = "x")
+```
+
+## Columm_2 {.tabset width="40%"}
+
+```{r}
+#| title: "SRN Summaries"
+#| expandable: TRUE
+data_srn_pro %>%
+  filter(existing_project_addressing_need_id_number == "NULL") %>%
+  mk_tble_smmry_srn(data = ., id_sffx = "gap")
+```
+
+```{r}
+#| title: "SRN Locations"
+#| expandable: TRUE
+mk_viz_proj_location_bar(data_current_srn, index = c("location", "research_category_srn"))
+```
+
+```{r}
+#| title: "SRN Project Counts"
+#| expandable: TRUE
+viz_smmry_srn_funnel
+```
