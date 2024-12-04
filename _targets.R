@@ -7,10 +7,11 @@
 library(targets)
 library(tarchetypes) # Load other packages as needed.
 
-global_package = c("tibble", "tidyverse", "magrittr","gauntlet"
-                   ,"gauntletReactable", "reactable", "reactablefmtr"
+global_package = c("tibble", "tidyverse", "magrittr"
+                   ,"reactable", "reactablefmtr"
                    ,"crosstalk", "plotly", "httr"
-                   ,"bslib","bsicons", "htmltools", "shiny")
+                   ,"bslib","bsicons", "htmltools", "shiny"
+                   ,"gauntlet", "gauntletReactable")
 
 # Set target options:
 tar_option_set(
@@ -87,9 +88,8 @@ list(
   ,tar_target(viz_prj_timeline, mk_viz_prj_timeline(data_current_pro))
   ,tar_target(viz_proj_location_tree
               ,mk_viz_proj_location_bar(data_current_pro, filter = F,  index = c("location", "research_category")))
-  # ,tar_target(viz_tble_agg_addrssd_gap, mk_tble_agg_addrssd_gap(data_needProj_gap))
+  #,tar_target(viz_tble_agg_addrssd_gap, mk_tble_agg_addrssd_gap(data_needProj_gap))
   ##ern
-
   ,tar_target(
     viz_tble_crrnt_srn_xwalk
     ,mk_tble_crrnt_srn_xwalk(data_current_srn, id_sffx = "xx"))
@@ -113,7 +113,8 @@ list(
   # ,tar_target(viz_proj_location_tree_needs
   #             ,mk_viz_proj_location_bar_needs(data_srn_pro))
   # ,tar_target(viz_tble_project_summary, mk_tble_project_summary(data_current_pro))
-  #data_center_objects
+  #data_center_objects==========================================================
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ,tar_target(viz_tble_dcntr_current, mk_tble_dcntr_current(head(data_current_pro)))
   ,tar_target(viz_tble_dcntr_need, mk_tble_dcntr_need(data_needed_pro))
   ,tar_target(viz_tble_dcntr_ref, mk_tble_dcntr_ref(data_references_pro))
@@ -121,15 +122,10 @@ list(
   ,tar_target(viz_tble_dcntr_acc, mk_tble_dcntr_acc(data_acro_list_pro))
   ,tar_target(viz_tble_dcntr_srn, mk_tble_dcntr_srn(data_srn_pro))
   ,tar_target(viz_nav_object, make_nav_bar(viz_tble_dcntr_def = viz_tble_dcntr_def))
-  #reports
-  # tar_quarto(rosa_dashboard.qmd)
+  #reports======================================================================
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ,tar_quarto(rpt_rosa_dashboard
               ,here::here("analysis/rosa_dashboard.qmd")
               ,quiet = F)
-  ,tar_quarto(rpt_rosa_dashboard_test
-              ,here::here("analysis/rosa_dashboard_test.qmd")
-              ,quiet = F)
-
-
 )
 
