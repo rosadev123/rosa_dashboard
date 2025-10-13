@@ -65,10 +65,6 @@ list(
       ,"FishFORWRD v2.1.2_1.7.25.xlsx"
     ), format = "file")
   ,tar_target(data_rosa_dbase_list, upload_file_rosa(data_rosa_dbase_file))
-  #data_objects_raw=============================================================
-  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # ,tar_target(data_raw_current, readxl::read_xlsx(data_file_current))
-  # ,tar_target(data_raw_needed, readxl::read_xlsx(data_file_needed))
   #data_objects_pro=============================================================
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ,tar_target(data_current_pro, prcss_current_proj(data_rosa_dbase_list))
@@ -78,9 +74,6 @@ list(
   ,tar_target(data_acro_list_pro, prcss_acro_list(data_rosa_dbase_list))
   ,tar_target(data_srn_pro, prcss_srn(data_rosa_dbase_list))
   ,tar_target(data_current_srn, prcss_current_srn(data_current_pro,data_srn_pro))
-  # ,tar_target(data_current_needed, prcss_merge_current_needed(data_needed_pro, data_current_pro))
-  # ,tar_target(data_needed_pro_ex, prcss_needed_proj_ex(data_needed_pro, data_current_needed))
-  # ,tar_target(data_needProj_gap, pivot_needProj_gap(data_needed_pro))
   #viz_objects==================================================================
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ##current
@@ -89,39 +82,39 @@ list(
   ,tar_target(viz_proj_location_tree
               ,mk_viz_proj_location_bar(data_current_pro, filter = F,  index = c("location", "research_category")))
   #,tar_target(viz_tble_agg_addrssd_gap, mk_tble_agg_addrssd_gap(data_needProj_gap))
-  ##ern
-  ,tar_target(
-    viz_tble_crrnt_srn_xwalk
-    ,mk_tble_crrnt_srn_xwalk(data_current_srn, id_sffx = "xx"))
-  ,tar_target(viz_smmry_srn_funnel, mk_vix_smmry_srn_funnel(data_srn_pro))
-  ,tar_target(viz_smmry_srn_location_tree, mk_viz_proj_location_bar(data_current_srn, index = c("location", "research_category_srn")))
-  ,tar_target(
-    viz_tble_smmry_srn,
-    data_srn_pro %>%
-      filter(existing_project_addressing_need_id_number != "NULL") %>%
-      mk_tble_smmry_srn(., id_sffx = "reg"))
+  ##ern tab---------------------------------------------------------------------
+  # ,tar_target(
+  #   viz_tble_crrnt_srn_xwalk
+  #   ,mk_tble_crrnt_srn_xwalk(data_current_srn, id_sffx = "xx"))
+  # ,tar_target(viz_smmry_srn_funnel, mk_vix_smmry_srn_funnel(data_srn_pro))
+  # ,tar_target(viz_smmry_srn_location_tree, mk_viz_proj_location_bar(data_current_srn, index = c("location", "research_category_srn")))
+  # ,tar_target(
+  #   viz_tble_smmry_srn,
+  #   data_srn_pro %>%
+  #     filter(existing_project_addressing_need_id_number != "NULL") %>%
+  #     mk_tble_smmry_srn(., id_sffx = "reg"))
   # ,tar_target(viz_tble_needs_proj_shrt, mk_tble_needs_proj_shrt(data_current_needed))
   # ,tar_target(viz_tble_need_anmlgrp, mk_tble_need_anmlgrp(data_current_needed))
   # ,tar_target(viz_viz_unaddressed_needs, mk_viz_unaddressed_needs(data_needProj_gap))
   # ,tar_target(viz_tble_agg_needs_animal_cmplt, mk_tble_agg_needs_animal_cmplt(data_current_needed))
-  ##gap
-  ,tar_target(
-    viz_tble_smmry_srn_gap,
-    data_srn_pro %>%
-      filter(existing_project_addressing_need_id_number == "NULL") %>%
-      mk_tble_smmry_srn(data = ., id_sffx = "gap"))
+  ##gap tab---------------------------------------------------------------------
+  # ,tar_target(
+  #   viz_tble_smmry_srn_gap,
+  #   data_srn_pro %>%
+  #     filter(existing_project_addressing_need_id_number == "NULL") %>%
+  #     mk_tble_smmry_srn(data = ., id_sffx = "gap"))
   # ,tar_target(viz_proj_location_tree_needs
   #             ,mk_viz_proj_location_bar_needs(data_srn_pro))
   # ,tar_target(viz_tble_project_summary, mk_tble_project_summary(data_current_pro))
   #data_center_objects==========================================================
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  ,tar_target(viz_tble_dcntr_current, mk_tble_dcntr_current(head(data_current_pro)))
+  ,tar_target(viz_tble_dcntr_current, mk_tble_dcntr_current(data_current_pro))
   ,tar_target(viz_tble_dcntr_need, mk_tble_dcntr_need(data_needed_pro))
   ,tar_target(viz_tble_dcntr_ref, mk_tble_dcntr_ref(data_references_pro))
   ,tar_target(viz_tble_dcntr_def, mk_tble_dcntr_def(data_def_terms_pro))
   ,tar_target(viz_tble_dcntr_acc, mk_tble_dcntr_acc(data_acro_list_pro))
   ,tar_target(viz_tble_dcntr_srn, mk_tble_dcntr_srn(data_srn_pro))
-  ,tar_target(viz_nav_object, make_nav_bar(viz_tble_dcntr_def = viz_tble_dcntr_def))
+  # ,tar_target(viz_nav_object, make_nav_bar(viz_tble_dcntr_def = viz_tble_dcntr_def)) #this was to check something
   #reports======================================================================
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ,tar_quarto(rpt_rosa_dashboard

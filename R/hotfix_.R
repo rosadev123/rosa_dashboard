@@ -1,16 +1,16 @@
 #
 colDef_urlLink_hotfix = function (cols, link_text){
   tmp_coldef = colDef(cell = function(value, index) {
-    mydata1 <- try(RETRY("GET", url = value, times = 1))
+    mydata1 <- try(httr::RETRY("GET", url = value, times = 1))
     if (is(mydata1, "try-error")) mydata1 <- list(status_code = 404)
     if(mydata1$status_code == 200){
-      # print("herro")
+      print("Good link")
 
        tt = htmltools::tags$a(href = value, target = "_blank", as.character(link_text))
 
     } else {
-      # print("herro3333")
-      tt = "Bad/Missing Link"
+      print("Bad link")
+      tt = "Undetermined"
 
     }
     # htmltools::tags$a(href = value, target = "_blank", as.character(link_text))

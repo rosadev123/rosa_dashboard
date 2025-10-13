@@ -1,6 +1,5 @@
 mk_tble_dcntr_need = function(data){
   # data = tar_read(data_needed_pro)
-  data |>  colnames() |> sort()
   tmp_data = data %>%
     select(research_need_id, research_category, source_of_identification
            ,fixed_or_floating

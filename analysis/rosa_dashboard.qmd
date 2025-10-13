@@ -62,8 +62,6 @@ tar_load(data_needed_pro)
 tar_load(data_srn_pro)
 tar_load(viz_prj_timeline)
 tar_load(viz_proj_location_tree)
-tar_load(viz_smmry_srn_funnel)
-tar_load(viz_smmry_srn_location_tree)
 tar_load(viz_tble_crrnt_proj_shrt)
 tar_load(viz_tble_dcntr_acc)
 tar_load(viz_tble_dcntr_current)
@@ -98,21 +96,24 @@ Developed in Partnership by <strong>ROSA</strong>, <strong>Attentive Energy</str
 bslib::card(
   bslib::card_body(
     shiny::markdown("
-  <strong>Purpose of this Database</strong><br>
-FishFORWRD is a catalog of all East Coast research, monitoring efforts, and stated research needs for offshore wind, fish, and fisheries. This database differentiates ongoing projects funded to examine offshore wind interactions from other programs that provide valuable data, but which haven't necessarily been designed to assess offshore wind impacts. The objective of FishFORWRD is to increase awareness of ongoing work, avoid duplication of efforts, and create a common understanding of research needs. This tool is meant for research funders, fisheries and offshore wind researchers, offshore wind developers, and the public. 
+<strong>FishFORWRD | Fish and Fisheries OffshoRe Wind Database</strong><br>
+- FishFORWRD is a catalog of all East Coast <strong>research</strong>, <strong>monitoring efforts</strong>, and stated <strong>research needs</strong> for offshore wind, fish, and fisheries.   
+- Included are research and monitoring funded specifically to understand offshore wind potential effects on fish and fisheries.   
+- The <strong>objective</strong> of FishFORWRD is to increase awareness of ongoing work, avoid duplication of efforts, and create a common understanding of research needs. This tool is meant for research funders, fisheries and offshore wind researchers, offshore wind developers, and the public.   
+
 
 <strong>How to use this Dashboard</strong><br>
-This dashboard is comprised of a number of tabs, each with their own purpose and functionality with features to help you explore page content or visuals. All tables and plots are interactive and can be manipulated via the mouse. Use this dashboard to explore completed and ongoing research and monitoring efforts, explore research needs expressed by our community, understand which research needs have been funded and are under exploration (under development), and which research gaps still remain (under development). Filter projects and research needs by location, research category, methodology used, funder and more.
+- <strong>Filter</strong> projects and research needs by location, research category, methodology used, funder and more. 
+- <strong>Download</strong> database information to explore information outside of the webtool
+- <strong>Submit</strong> new projects, new needs, and corrections
 
 <strong>Explanation of Tabs</strong>
 
-<strong>[Current Projects:](#current-projects)</strong> : View completed and ongoing projects with high level attributes. This includes funded research and implemented offshore wind developer Fisheries Monitoring Plans.
+<strong>[Research Overview:](#research-overview)</strong> View completed and ongoing projects with high level attributes. This includes funded research and implemented offshore wind developer Fisheries Monitoring Plans.
 
-<strong>[Database Center:](#database-center)</strong> Interact with raw data and download database directly to your local computer. Find term definitions and references.
+<strong>[FishFORWRD Full View:](#full-view)</strong> Interact with raw data and download database directly to your local computer. Find term definitions and references.
 
-<strong>[Submit Project:](#submit-project)</strong> Submit information to update and improve FishFORWRD.
-
-<strong>[Explored Research Needs & Research Gaps Analysis:](#submit-project)</strong> Under Development.")
+<strong>[Submit Project:](#submit-project)</strong> Submit information to update and improve FishFORWRD.")
   )
 )
 ```
@@ -183,7 +184,7 @@ For support, issue reporting, or for features you'd like to see - contact: `info
 This dashboard was last published: `r Sys.Date()` *`Version 2.1.0`*
 :::
 
-# Current Projects {#current-projects orientation="columns" scrolling="false"}
+# Research Overview {#research-overview orientation="columns" scrolling="false"}
 
 ## Column {width="60%"}
 
@@ -193,13 +194,13 @@ This dashboard was last published: `r Sys.Date()` *`Version 2.1.0`*
 bslib::card(full_screen = FALSE
   # height="200px"
   ,bslib::card_body(
-    shiny::markdown("Find full project information in Database Center")))
+    shiny::markdown("Find full project information and identified research needs in FishFORWRD Full View tab")))
 ```
 
 ### Row
 
 ```{r}
-#| title: "Current Projects Snapshot"
+#| title: "Snapshot of Ongoing & Completed Research & Monitoring Efforts"
 #| expandable: TRUE
 viz_tble_crrnt_proj_shrt
 ```
@@ -218,75 +219,7 @@ viz_prj_timeline
 viz_proj_location_tree
 ```
 
-# Explored Research Needs {#explored-research-needs orientation="columns" scrolling="false"}
-
-## Column {width="60%"}
-
-### Row {height="10%"}
-
-```{r}
-bslib::card(full_screen = FALSE
-  # height="200px"
-  ,bslib::card_body(
-    shiny::markdown("Find full project information in Database Center")))
-```
-
-### Row
-
-```{r}
-#| title: "Existing Proj. and SRN XWalk Table"
-#| expandable: TRUE
-
-mk_tble_crrnt_srn_xwalk(data_current_srn, id_sffx = "x")
-```
-
-## Columm_2 {.tabset width="40%"}
-
-```{r}
-#| title: "SRN Summaries"
-#| expandable: TRUE
-data_srn_pro %>%
-  filter(existing_project_addressing_need_id_number != "NULL") %>%
-  mk_tble_smmry_srn(data = ., id_sffx = "ern")
-```
-
-```{r}
-#| title: "SRN Locations"
-#| expandable: TRUE
-viz_smmry_srn_location_tree
-```
-
-```{r}
-#| title: "SRN Project Counts"
-#| expandable: TRUE
-viz_smmry_srn_funnel
-```
-
-# Research Gap Analysis {#research-needs orientation="columns" scrolling="false"}
-
-## Column {width="60%"}
-
-### Row {height="10%"}
-
-```{r}
-bslib::card(full_screen = FALSE
-  # height="200px"
-  ,bslib::card_body(
-    str_glue("This table holds summarized research needs deemed unaddressed.\n
-             Find the full list of all {nrow(data_needed_pro)} Research Needs in Database Center")))
-```
-
-### Row
-
-```{r}
-#| title: "Summarized Research Needs Snapshot"
-#| expandable: TRUE
-data_srn_pro %>%
-  filter(existing_project_addressing_need_id_number == "NULL") %>%
-  mk_tble_smmry_srn(data = ., id_sffx = "gap")
-```
-
-# Database Center {#database-center orientation="rows" scrolling="false"}
+# FishFORWRD Full View {#full-view orientation="rows" scrolling="false"}
 
 ##  {.tabset}
 
@@ -297,15 +230,9 @@ viz_tble_dcntr_current
 ```
 
 ```{r}
-#| title: Research Priorities
+#| title: Identified Research Needs
 #| expandable: TRUE
 viz_tble_dcntr_need
-```
-
-```{r}
-#| title: Smmrzd. Research Needs
-#| expandable: TRUE
-viz_tble_dcntr_srn
 ```
 
 ```{r}
@@ -348,6 +275,13 @@ Your submission will be QA/QC'ed and added to the database during our next biann
 <strong>Additional Resources</strong><br>
 See the links provided below for additional resources.
 
+
+[ROSA Regional Research Coordination](https://www.rosascience.org/research-coordination/ 'Please \"Right Click\" and open in new tab')    
+FishFORWRD is just one of ROSA’s tools and resources aimed to bridge gaps in knowledge, promote efficient resource use, and create shared frameworks for research and data management. This page holds more tools, resources and programs to promote regional coordination.
+
+[ROSA Data Governance Program](https://www.rosascience.org/rosa-data-governance/ 'Please \"Right Click\" and open in new tab')  
+Looking for data? ROSA is currently building its Data Governance Program to create guidance and support data sharing with consistent policies, processes, data standards, and workflows that can be used by everyone in the data ecosystem. This webpage will hold the most up to date information.
+
 [RWSC Research Planning Map](https://rwsc.org/map/ 'Please \"Right Click\" and open in new tab')    
 RWSC and ROSA are in the process of developing and populating a web-based map to support offshore wind research planning. The Research Planning Map will display the locations of ongoing offshore wind research activities in U.S. Atlantic waters, including the locations of deployed sensors, survey transects, seafloor mapping footprints, and more. 
     
@@ -364,4 +298,3 @@ This tool is a searchable database of potential mitigation practices that may be
   )
 )
 ```
-

@@ -1,6 +1,6 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|d807c5d11bda50f2|||||||||||||||
-colDef_urlLink_hotfix|function|7dca20c39a24fd9f|||||||||||||||
+.Random.seed|object|8cd026ae87630734|||||||||||||||
+colDef_urlLink_hotfix|function|e74e237d592cbfa9|||||||||||||||
 colDef_urlLink_spec_hotfix|function|3fa694a49f939e79|||||||||||||||
 data_acro_list_pro|stem|6fd6bbc90456241e|4e4d426b946b153c|2108e8d45786158d|-627136561||t20109.8103810215s|b518a3c2eda8e5a8|955|rds|local|vector|||0||
 data_current_pro|stem|1d0344018d930e80|eebda3add9f35bbf|5514e8bc0508c450|1806357150||t20109.810383915s|04feec285a06d927|51094|rds|local|vector|||0.24|There were 2 warnings in mutate.The first warning wasℹ In argument project_start_year  as.numericproject_start_year.Caused by warning NAs introduced by coercionℹ Run dplyrlast_dplyr_warnings to see the 1 remaining warning.|
@@ -21,9 +21,9 @@ mk_tble_agg_needs_animal_cmplt|function|ba4e905d62481fa3|||||||||||||||
 mk_tble_crrnt_proj_shrt|function|1cdc116b27ef28c1|||||||||||||||
 mk_tble_crrnt_srn_xwalk|function|8e1e128648b096f9|||||||||||||||
 mk_tble_dcntr_acc|function|27fee5e5c0433094|||||||||||||||
-mk_tble_dcntr_current|function|267e6c2afbdafd62|||||||||||||||
+mk_tble_dcntr_current|function|7f889c2d994f6d26|||||||||||||||
 mk_tble_dcntr_def|function|34acfa7144c8fb34|||||||||||||||
-mk_tble_dcntr_need|function|c1a4f507fe3b3b8f|||||||||||||||
+mk_tble_dcntr_need|function|145064da9ca6b1ec|||||||||||||||
 mk_tble_dcntr_ref|function|c2aacc0bc2c2b2b6|||||||||||||||
 mk_tble_dcntr_srn|function|219d3011d3350992|||||||||||||||
 mk_tble_need_anmlgrp|function|ad0ddc177277a253|||||||||||||||
@@ -48,7 +48,7 @@ prcss_needed_proj_ex|function|76721a90ee5b236f|||||||||||||||
 prcss_references|function|f7437a523de7d8bb|||||||||||||||
 prcss_srn|function|84362c803f0987c9|||||||||||||||
 rctbl_dflt_coldef|function|6df9ef353344edeb|||||||||||||||
-rpt_rosa_dashboard|stem|a03202d220bce88d|181b303481467442|70d9df2f80479b63|-2138987390|analysis/rosa_dashboard.html*analysis/rosa_dashboard.qmd|t20109.8122399475s|a04a6ec22c4a1352|8811729|file|local|vector|||22.16||
+rpt_rosa_dashboard|stem|b27577dbb87b085a|54d13a87efd364d0|d8e6cdd401bab49d|-2138987390|analysis/rosa_dashboard.html*analysis/rosa_dashboard.qmd|t20109.9279559665s|d5487d01989c28bd|8928651|file|local|vector|||17.96||
 rpt_rosa_dashboard_test|stem|a841254f7bf6e0b1|bb89b8846d20f0c3|a2432de9aa9db575|-1546654275|analysis/rosa_dashboard_test.html*analysis/rosa_dashboard_test.qmd|t20060.8940993437s|3b36dad7f54fef4e|8187821|file|local|vector|||17.14||
 strg_numeric_order|function|ceb791b31789565c|||||||||||||||
 strg_wrap_html|function|1e9314d3186b38b9|||||||||||||||
@@ -62,9 +62,9 @@ viz_smmry_srn_location_tree|stem|55ff65af08731f38|2afaae87ab1b23ef|697e09a0e8641
 viz_tble_crrnt_proj_shrt|stem|224b8c59843e3098|52c56a5a042ad618|225fbdf215ce3c9c|612505591||t20109.8119340156s|a295781e28802644|22831|rds|local|vector|||133.47||
 viz_tble_crrnt_srn_xwalk|stem|2044b8577b4dedcd|8b237b0ed9e4bb17|d673c44378298dba|1197770085||t20109.8119843613s|56be4b2b7beaff5e|4208|rds|local|vector|||0.08||
 viz_tble_dcntr_acc|stem|5a0358b226345ff8|d86052b5bfd110ce|e9cde2c81d21da7a|667489947||t20060.8911969603s|2f448a32c7c59061|2086|rds|local|vector|||0.05||
-viz_tble_dcntr_current|stem|59e60335352da77b|e34c3e084a29bd49|41ee023fbb2f14f4|460240887||t20109.8119710033s|9920ed09bf4afd3e|4676|rds|local|vector|||3.17||
+viz_tble_dcntr_current|stem|3867f825b512cd15|2c0b71e46733571b|993f233d5809137f|460240887||t20109.9277472166s|94cf66cee61d8ac1|64510|rds|local|vector|||129.83||
 viz_tble_dcntr_def|stem|3c302150842e4583|9eb7f6b13db96143|b07f9d03f74c4bfb|-297303651||t20060.8938989321s|921669c1627a7466|3806|rds|local|vector|||0.01||
-viz_tble_dcntr_need|stem|a311d7e55af389a3|1d7f2f08b004eeb3|1e188c1224d65400|197402692||t20109.8119825904s|3ce8f535e5de6e5a|33991|rds|local|vector|||0.12||
+viz_tble_dcntr_need|stem|a311d7e55af389a3|1d7f2f08b004eeb3|8e018f8ccd153ab4|197402692||t20109.9277494389s|3ce8f535e5de6e5a|33991|rds|local|vector|||0.16||
 viz_tble_dcntr_ref|stem|fca5947bff075d0d|7dea2871c7e5f531|c6fcce478bbc5500|1228082018||t20060.8938876937s|1e37981b37cb43c6|3500|rds|local|vector|||0.18|There was 1 warning in mutate.ℹ In argument acrosseverything, replace_na, NULL.Caused by warning The ... argument of across is deprecated as of dplyr 1.1.0.Supply arguments directly to .fns through an anonymous function instead.   Previously  acrossab, mean, na.rm  TRUE   Now  acrossab, \x meanx, na.rm  TRUE|
 viz_tble_dcntr_srn|stem|a237d7f00c34c612|3ac587aa0add1612|58d0587ec5cd9fb8|-1400486897||t20109.8119791414s|4a26097ba98ec1f6|10633|rds|local|vector|||0.14|There was 1 warning in mutate.ℹ In argument acrosseverything, replace_na, NULL.Caused by warning The ... argument of across is deprecated as of dplyr 1.1.0.Supply arguments directly to .fns through an anonymous function instead.   Previously  acrossab, mean, na.rm  TRUE   Now  acrossab, \x meanx, na.rm  TRUE|
 viz_tble_smmry_srn|stem|d187fdf1cbca354c|cf16f93463f0c870|90b8eda41723cb14|-1081562513||t20109.81197994s|26ae483640fa1b95|7169|rds|local|vector|||0.05||
