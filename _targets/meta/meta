@@ -1,42 +1,43 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
-.Random.seed|object|8cd026ae87630734|||||||||||||||
+.Random.seed|object|7d9a46654d91c6ce|||||||||||||||
 colDef_urlLink_hotfix|function|e74e237d592cbfa9|||||||||||||||
 colDef_urlLink_spec_hotfix|function|3fa694a49f939e79|||||||||||||||
-data_acro_list_pro|stem|6fd6bbc90456241e|4e4d426b946b153c|2108e8d45786158d|-627136561||t20109.8103810215s|b518a3c2eda8e5a8|955|rds|local|vector|||0||
-data_current_pro|stem|1d0344018d930e80|eebda3add9f35bbf|5514e8bc0508c450|1806357150||t20109.810383915s|04feec285a06d927|51094|rds|local|vector|||0.24|There were 2 warnings in mutate.The first warning wasℹ In argument project_start_year  as.numericproject_start_year.Caused by warning NAs introduced by coercionℹ Run dplyrlast_dplyr_warnings to see the 1 remaining warning.|
-data_current_srn|stem|3d8276ac77238727|f8511099ef21d446|37845e0ba4e9431a|1818361361||t20109.8119809469s|88fe4dfadea3502e|50108|rds|local|vector|||0.05|Expected 50 pieces. Missing pieces filled with NA in 101 rows 1, 2, 3, 4, 5,6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ....|
-data_def_terms_pro|stem|3a9b96d7093902d1|a1d73d4eb9659508|a6893265fdaf8b1f|731187685||t20109.8103856164s|65a5ebab96562273|2672|rds|local|vector|||0||
-data_needed_pro|stem|25767cf62d4c386c|883c545c6b113469|b8d830d0769d1915|1086603909||t20109.8103853617s|e7affe787d58be00|30537|rds|local|vector|||0.03||
-data_references_pro|stem|95c7ce6e6a52e992|2e913181c251c460|2238ddc48d757da9|1195677051||t20109.8103842159s|bdd335b3de556edd|2104|rds|local|vector|||0.02||
-data_rosa_dbase_file|stem|0dd0638b510d9f81|a2c6eec607398234|ef46db3751d8e999|557429983|C:/Users/GauntM/Documents/020_projects/rosa_dashboard/data/FishFORWRD v2.1.2_1.7.25.xlsx|t20109.8084951591s|d632d0414bc9799b|241416|file|local|vector|||2.24|replacing previous import data.tablefirst by dplyrfirst when loading gauntlet. replacing previous import data.tablelast by dplyrlast when loading gauntlet. replacing previous import data.tablebetween by dplyrbetween when loading gauntlet. replacing previous import magrittrset_names by purrrset_names when loading gauntlet. replacing previous import data.tabletranspose by purrrtranspose when loading gauntlet|
-data_rosa_dbase_list|stem|4cb8615e085bd053|b095dce4a2ccde1b|00799492b3830425|-2137420262||t20109.8103806627s|8a4d6d6fa30ee4cc|93025|rds|local|vector|||0.22||
-data_srn_pro|stem|515bd790d743dfc6|a6cf544fb1781a9c|d71b6a240a3b3e42|1509705692||t20109.8103848062s|f3192fa10ac3f892|10978|rds|local|vector|||0.03||
+count_percent_zscore|function|37718ad1d9d87b21|||||||||||||||
+data_acro_list_pro|stem|83d519a86797642d|4e4d426b946b153c|e50bd3e63a798651|-627136561||t20385.9038473918s|57e1d1c97dc9f954|977|rds|local|vector|||0||
+data_current_pro|stem|c0916c69b1021451|eebda3add9f35bbf|c57a4de0126e890a|1806357150||t20385.9038457606s|005c56dfe0bb21e5|55336|rds|local|vector|||0.23|There were 2 warnings in mutate.The first warning wasℹ In argument project_start_year  as.numericproject_start_year.Caused by warning NAs introduced by coercionℹ Run dplyrlast_dplyr_warnings to see the 1 remaining warning.|
+data_current_srn|stem|22b0700cb4a118ea|f8511099ef21d446|81d905a36f00315c|1818361361||t20385.9081691726s|7abc72d4170c9986|71180|rds|local|vector|||0.08|Expected 50 pieces. Missing pieces filled with NA in 72 rows 1, 2, 3, 4, 5,6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ....|
+data_def_terms_pro|stem|0aff11c58490976d|a1d73d4eb9659508|95ffb64177015159|731187685||t20385.9038476987s|5fa974ba3725aea8|2699|rds|local|vector|||0||
+data_needed_pro|stem|6bb47e33ff69ccf1|883c545c6b113469|ed7cdbd25442349a|1086603909||t20385.903848382s|976cb8b293378772|30595|rds|local|vector|||0.04||
+data_references_pro|stem|d12f814168d78d18|2e913181c251c460|de6a6ce1b8d8e64b|1195677051||t20385.9038461371s|013b2dc8cbb4a4d9|2466|rds|local|vector|||0||
+data_rosa_dbase_file|stem|628f0663a887845d|5e83b997172e63d6|ef46db3751d8e999|557429983|C:/Users/GauntM/Documents/020_projects/rosa_dashboard/data/FishFORWRD v2.2.0_10.21.25.xlsx|t20385.9028114658s|7986ef68bd71e472|445289|file|local|vector|||6.87|replacing previous import data.tablelike by DescToolslike when loading gauntlet. replacing previous import data.tablefirst by dplyrfirst when loading gauntlet. replacing previous import data.tablelast by dplyrlast when loading gauntlet. replacing previous import data.tablebetween by dplyrbetween when loading gauntlet. replacing previous import magrittrset_names by purrrset_names when loading gauntlet. replacing previous import data.tabletranspose by purrrtranspose when loading gauntlet. replacing previous import purrr by rlang when loading gauntlet. replacing previous import purrrflatten_lgl by rlangflatten_lgl when loading gauntlet. replacing previous import purrrsplice by rlangsplice when loading gauntlet. replacing previous import purrrflatten_chr by rlangflatten_chr when loading gauntlet. replacing previous import purrrflatten_raw by rlangflatten_raw when loading gauntlet. replacing previous import data.table by rlang when loading gauntlet. replacing previous import log4rwarn by rlangwarn when loading gauntlet. replacing previous import purrrflatten by rlangflatten when loading gauntlet. replacing previous import purrrflatten_dbl by rlangflatten_dbl when loading gauntlet. replacing previous import purrrinvoke by rlanginvoke when loading gauntlet. replacing previous import purrrflatten_int by rlangflatten_int when loading gauntlet. replacing previous import data.tableyearmon by zooyearmon when loading gauntlet. replacing previous import data.tableyearqtr by zooyearqtr when loading gauntlet|
+data_rosa_dbase_list|stem|3f02120aff428e9d|b095dce4a2ccde1b|1156e9668d455bc2|-2137420262||t20385.9038425405s|5c3719ed749168d7|96756|rds|local|vector|||0.52||
+data_srn_pro|stem|df4e57dee8ef5131|a6cf544fb1781a9c|0055c8edc56a5dd0|1509705692||t20385.9038470383s|892fbe157f0cd896|8732|rds|local|vector|||0.05||
 global_package|object|66eb062dfc864c56|||||||||||||||
 make_nav_bar|function|5238162f66958461|||||||||||||||
 mend_ern_ids|function|14ddbfff1eaba8a8|||||||||||||||
 mend_rn_ids|function|603a192d53bc5f45|||||||||||||||
 mk_special_header|function|c72208c16b4b2f63|||||||||||||||
 mk_tble_agg_addrssd_gap|function|f8799fdb876e8b42|||||||||||||||
-mk_tble_agg_needs_animal_cmplt|function|ba4e905d62481fa3|||||||||||||||
+mk_tble_agg_needs_animal_cmplt|function|1a68739aa6df21d1|||||||||||||||
 mk_tble_crrnt_proj_shrt|function|1cdc116b27ef28c1|||||||||||||||
-mk_tble_crrnt_srn_xwalk|function|8e1e128648b096f9|||||||||||||||
+mk_tble_crrnt_srn_xwalk|function|a9abc4e927493aef|||||||||||||||
 mk_tble_dcntr_acc|function|27fee5e5c0433094|||||||||||||||
-mk_tble_dcntr_current|function|7f889c2d994f6d26|||||||||||||||
+mk_tble_dcntr_current|function|5733de5ad2baf76a|||||||||||||||
 mk_tble_dcntr_def|function|34acfa7144c8fb34|||||||||||||||
 mk_tble_dcntr_need|function|145064da9ca6b1ec|||||||||||||||
 mk_tble_dcntr_ref|function|c2aacc0bc2c2b2b6|||||||||||||||
 mk_tble_dcntr_srn|function|219d3011d3350992|||||||||||||||
-mk_tble_need_anmlgrp|function|ad0ddc177277a253|||||||||||||||
+mk_tble_need_anmlgrp|function|998d780f605a929c|||||||||||||||
 mk_tble_needs_proj_shrt|function|8df66ce8452efb8a|||||||||||||||
 mk_tble_needs_proj_shrt_test|function|e45d29abcff5442a|||||||||||||||
 mk_tble_project_summary|function|6e1e467c927c73d7|||||||||||||||
-mk_tble_smmry_srn|function|318edf23a0600caf|||||||||||||||
+mk_tble_smmry_srn|function|8c37be6a232b4552|||||||||||||||
 mk_tble_smmry_srn_gap|function|64f1f0457f9a8f77|||||||||||||||
 mk_vix_smmry_srn_funnel|function|64d9f6f782a6b42d|||||||||||||||
 mk_viz_prj_timeline|function|5bf95fd6acb2f06d|||||||||||||||
-mk_viz_proj_location_bar|function|e3aa2cdfc01ff569|||||||||||||||
-mk_viz_proj_location_bar_needs|function|f638bcdc837dde3e|||||||||||||||
-mk_viz_unaddressed_needs|function|5940bb01f58e39f5|||||||||||||||
+mk_viz_proj_location_bar|function|8e94b7b3fc0c82fa|||||||||||||||
+mk_viz_proj_location_bar_needs|function|6ed77bc5de884796|||||||||||||||
+mk_viz_unaddressed_needs|function|48b2dbd94a3425d5|||||||||||||||
 pivot_needProj_gap|function|27688f8614c96ff5|||||||||||||||
 prcss_acro_list|function|c354f5a559bed4fe|||||||||||||||
 prcss_current_proj|function|ac09904ad724cd56|||||||||||||||
@@ -48,24 +49,25 @@ prcss_needed_proj_ex|function|76721a90ee5b236f|||||||||||||||
 prcss_references|function|f7437a523de7d8bb|||||||||||||||
 prcss_srn|function|84362c803f0987c9|||||||||||||||
 rctbl_dflt_coldef|function|6df9ef353344edeb|||||||||||||||
-rpt_rosa_dashboard|stem|b27577dbb87b085a|54d13a87efd364d0|d8e6cdd401bab49d|-2138987390|analysis/rosa_dashboard.html*analysis/rosa_dashboard.qmd|t20109.9279559665s|d5487d01989c28bd|8928651|file|local|vector|||17.96||
-rpt_rosa_dashboard_test|stem|a841254f7bf6e0b1|bb89b8846d20f0c3|a2432de9aa9db575|-1546654275|analysis/rosa_dashboard_test.html*analysis/rosa_dashboard_test.qmd|t20060.8940993437s|3b36dad7f54fef4e|8187821|file|local|vector|||17.14||
+rpt_rosa_dashboard|stem|c679f1b5ef47a2f6|bbe6f1bd37c8dabf|c065fc8992b82e57|-2138987390|analysis/rosa_dashboard.html*analysis/rosa_dashboard.qmd|t20385.9084572473s|63063c311d1b9422|5052159|file|local|vector|||24.28||
 strg_numeric_order|function|ceb791b31789565c|||||||||||||||
 strg_wrap_html|function|1e9314d3186b38b9|||||||||||||||
 tar_scan_file|function|3cd31a42c440e6bc|||||||||||||||
 upload_file_rosa|function|c5db496ae9585280|||||||||||||||
-viz_nav_object|stem|32f17b0b7018d1ea|84343c2372d1946e|bed3cd1bbd1eb1a8|666359661||t20060.8941250033s|bdc6e81f7090e0af|62315|rds|local|vector|||0.17||
-viz_prj_timeline|stem|083715fb86e49398|08c06b365f82bfc6|857a54d064df6d7d|-343663630||t20109.8103866117s|32bd7b5f2ed90e34|246757|rds|local|vector|||0.03||
-viz_proj_location_tree|stem|0cfd8d82bb17c538|2734b9b25e979f5c|e578ae289d025dbc|-431421262||t20109.8103888919s|5b66448105b3f998|62314|rds|local|vector|||0.17|There was 1 warning in dplyrgroup_by.ℹ In argument acrossindex.Caused by warning Using an external vector in selections was deprecated in tidyselect 1.1.0.ℹ Please use all_of or any_of instead.   Was  data  selectindex   Now  data  selectall_ofindexSee httpstidyselect.rlib.orgreferencefaqexternalvector.html.|
-viz_smmry_srn_funnel|stem|5cfb23042fd2c66a|f1ffa483bee07cf1|0c8082659be7a7a0|428482551||t20109.8119764677s|aa9b5d1d366cde00|262971|rds|local|vector|||0.36|Ignoring unknown aesthetics text|
-viz_smmry_srn_location_tree|stem|55ff65af08731f38|2afaae87ab1b23ef|697e09a0e864107e|-479047181||t20109.8119832617s|0cc6b6c3ccab62cd|9732|rds|local|vector|||0.03||
-viz_tble_crrnt_proj_shrt|stem|224b8c59843e3098|52c56a5a042ad618|225fbdf215ce3c9c|612505591||t20109.8119340156s|a295781e28802644|22831|rds|local|vector|||133.47||
-viz_tble_crrnt_srn_xwalk|stem|2044b8577b4dedcd|8b237b0ed9e4bb17|d673c44378298dba|1197770085||t20109.8119843613s|56be4b2b7beaff5e|4208|rds|local|vector|||0.08||
-viz_tble_dcntr_acc|stem|5a0358b226345ff8|d86052b5bfd110ce|e9cde2c81d21da7a|667489947||t20060.8911969603s|2f448a32c7c59061|2086|rds|local|vector|||0.05||
-viz_tble_dcntr_current|stem|3867f825b512cd15|2c0b71e46733571b|993f233d5809137f|460240887||t20109.9277472166s|94cf66cee61d8ac1|64510|rds|local|vector|||129.83||
-viz_tble_dcntr_def|stem|3c302150842e4583|9eb7f6b13db96143|b07f9d03f74c4bfb|-297303651||t20060.8938989321s|921669c1627a7466|3806|rds|local|vector|||0.01||
-viz_tble_dcntr_need|stem|a311d7e55af389a3|1d7f2f08b004eeb3|8e018f8ccd153ab4|197402692||t20109.9277494389s|3ce8f535e5de6e5a|33991|rds|local|vector|||0.16||
-viz_tble_dcntr_ref|stem|fca5947bff075d0d|7dea2871c7e5f531|c6fcce478bbc5500|1228082018||t20060.8938876937s|1e37981b37cb43c6|3500|rds|local|vector|||0.18|There was 1 warning in mutate.ℹ In argument acrosseverything, replace_na, NULL.Caused by warning The ... argument of across is deprecated as of dplyr 1.1.0.Supply arguments directly to .fns through an anonymous function instead.   Previously  acrossab, mean, na.rm  TRUE   Now  acrossab, \x meanx, na.rm  TRUE|
-viz_tble_dcntr_srn|stem|a237d7f00c34c612|3ac587aa0add1612|58d0587ec5cd9fb8|-1400486897||t20109.8119791414s|4a26097ba98ec1f6|10633|rds|local|vector|||0.14|There was 1 warning in mutate.ℹ In argument acrosseverything, replace_na, NULL.Caused by warning The ... argument of across is deprecated as of dplyr 1.1.0.Supply arguments directly to .fns through an anonymous function instead.   Previously  acrossab, mean, na.rm  TRUE   Now  acrossab, \x meanx, na.rm  TRUE|
-viz_tble_smmry_srn|stem|d187fdf1cbca354c|cf16f93463f0c870|90b8eda41723cb14|-1081562513||t20109.81197994s|26ae483640fa1b95|7169|rds|local|vector|||0.05||
-viz_tble_smmry_srn_gap|stem|62cee31920deca4d|eecd6c7d2858108a|90b8eda41723cb14|1075889687||t20109.8119772085s|a6dbf45ffce4f301|5614|rds|local|vector|||0.03||
+viz_prj_timeline|stem|130101e891e53b65|08c06b365f82bfc6|9f85345016c74f94|-343663630||t20385.9081657471s|4935551a10425871|270164|rds|local|vector|||0.03||
+viz_proj_location_tree|stem|d8abdd16c30c7acf|2734b9b25e979f5c|8d87d64e10e0e0b9|-431421262||t20385.9062166554s|adff4d00b3bcadbf|66346|rds|local|vector|||0.2|There was 1 warning in dplyrgroup_by.ℹ In argument acrossindex.Caused by warning Using an external vector in selections was deprecated in tidyselect 1.1.0.ℹ Please use all_of or any_of instead.   Was  data  selectindex   Now  data  selectall_ofindexSee httpstidyselect.rlib.orgreferencefaqexternalvector.html.|
+viz_smmry_srn_funnel|stem|5e797b2b4da1a574|f1ffa483bee07cf1|52f914417e1f6e25|428482551||t20385.9081757787s|72407f876144d43c|248717|rds|local|vector|||0.38|Ignoring unknown aesthetics text|
+viz_smmry_srn_location_tree|stem|d73ffcb6fa59e408|2afaae87ab1b23ef|698836c2704c9229|-479047181||t20385.9081774252s|7b9641b1b0c91b02|9973|rds|local|vector|||0.07||
+viz_tble_agg_needs_animal_cmplt|stem||f38edb79cca31b17|7a8f0d25d47c756d|1798409705||t20374.9265689621s||0|rds|local|vector|||0.04||object data_current_needed not found
+viz_tble_crrnt_proj_shrt|stem|36f83c44ed04a605|52c56a5a042ad618|1ce580dead05c558|612505591||t20385.9062137655s|e3a1fdf45b4339cd|25156|rds|local|vector|||204.34||
+viz_tble_crrnt_srn_xwalk|stem|7e2e3b3196d91414|8b237b0ed9e4bb17|a68fdacc7bc9f60f|1197770085||t20374.9734417899s|8695bf3add742cae|5497|rds|local|vector|||0.11||
+viz_tble_dcntr_acc|stem|41d4d881c04c120b|d86052b5bfd110ce|192fccc16c98a74b|667489947||t20374.8705490666s|d8dc57ea58aea9c6|2107|rds|local|vector|||0||
+viz_tble_dcntr_current|stem|c0a184b01fbbbb0d|2c0b71e46733571b|54a9b1dc0104306c|460240887||t20385.9081646873s|ceba2ab4d5e17e5a|73009|rds|local|vector|||168.22||
+viz_tble_dcntr_def|stem|d93ab48cc8b2c197|9eb7f6b13db96143|6ab8a31f9076487a|-297303651||t20385.9081762828s|e4e9d95f5c2d9ef6|3827|rds|local|vector|||0.01||
+viz_tble_dcntr_need|stem|4da5e02b0e74b2a3|1d7f2f08b004eeb3|704d5d1b2ace4b4c|197402692||t20374.8705511566s|25fe09c17d5a82bc|34107|rds|local|vector|||0.11||
+viz_tble_dcntr_ref|stem|92a9fca10537f7c3|7dea2871c7e5f531|3289993ff704df65|1228082018||t20374.8705467796s|1e5bb438a5ab40db|3853|rds|local|vector|||0.14|There was 1 warning in mutate.ℹ In argument acrosseverything, replace_na, NULL.Caused by warning The ... argument of across is deprecated as of dplyr 1.1.0.Supply arguments directly to .fns through an anonymous function instead.   Previously  acrossab, mean, na.rm  TRUE   Now  acrossab, \x meanx, na.rm  TRUE|
+viz_tble_dcntr_srn|stem|8e37fa99f17dda0f|3ac587aa0add1612|961663680dd655e8|-1400486897||t20385.9081677809s|7f38c12721b96291|8536|rds|local|vector|||0.14|There was 1 warning in mutate.ℹ In argument acrosseverything, replace_na, NULL.Caused by warning The ... argument of across is deprecated as of dplyr 1.1.0.Supply arguments directly to .fns through an anonymous function instead.   Previously  acrossab, mean, na.rm  TRUE   Now  acrossab, \x meanx, na.rm  TRUE|
+viz_tble_need_anmlgrp|stem||ccea791819deef41|466c0a550dea0871|727636261||t20374.9265682464s||0|rds|local|vector|||0.11||object data_current_needed not found
+viz_tble_needs_proj_shrt|stem||8dd2d011e41f4fbd|90c44a44d5acb154|-1945808585||t20374.9265668938s||0|rds|local|vector|||6.12|replacing previous import data.tablelike by DescToolslike when loading gauntlet. replacing previous import data.tablefirst by dplyrfirst when loading gauntlet. replacing previous import data.tablelast by dplyrlast when loading gauntlet. replacing previous import data.tablebetween by dplyrbetween when loading gauntlet. replacing previous import magrittrset_names by purrrset_names when loading gauntlet. replacing previous import data.tabletranspose by purrrtranspose when loading gauntlet. replacing previous import purrr by rlang when loading gauntlet. replacing previous import purrrflatten_lgl by rlangflatten_lgl when loading gauntlet. replacing previous import purrrsplice by rlangsplice when loading gauntlet. replacing previous import purrrflatten_chr by rlangflatten_chr when loading gauntlet. replacing previous import purrrflatten_raw by rlangflatten_raw when loading gauntlet. replacing previous import data.table by rlang when loading gauntlet. replacing previous import log4rwarn by rlangwarn when loading gauntlet. replacing previous import purrrflatten by rlangflatten when loading gauntlet. replacing previous import purrrflatten_dbl by rlangflatten_dbl when loading gauntlet. replacing previous import purrrinvoke by rlanginvoke when loading gauntlet. replacing previous import purrrflatten_int by rlangflatten_int when loading gauntlet. replacing previous import data.tableyearmon by zooyearmon when loading gauntlet. replacing previous import data.tableyearqtr by zooyearqtr when loading gauntlet|object data_current_needed not found
+viz_tble_smmry_srn|stem|df2b91a6fe25abb9|ca7f120935dc3a98|49bbc1f555a9fa39|-1081562513||t20385.9081702046s|2079c90c4f37c5b8|4658|rds|local|vector|||0.05||
+viz_viz_unaddressed_needs|stem||b07b6ee089c22094|49ffbb6f54464031|696977009||t20374.9265698348s||0|rds|local|vector|||0.05||target viz_viz_unaddressed_needs attempted to run targetstar_read to during a pipeline, which is unsupported except when format in cfile, file_fast and repository  local, or if you are reading from a data store that does not belong to the current pipeline. This is because functions like tar_read attempt to access or modify the local data store, which may not exist or be properly synced in certain situations. Also, please be aware that some functions like tar_make and tar_destroy should never run inside a target. Please find a different workaround for your use case.

@@ -1,5 +1,6 @@
 mk_tble_crrnt_srn_xwalk = function(data, id_sffx){
   # data = tar_read(data_current_srn)
+  # id_sffx = "x"
 
   tmp_data = data %>%
     # glimpse()
@@ -10,7 +11,11 @@ mk_tble_crrnt_srn_xwalk = function(data, id_sffx){
       ,methodology
       ,location
     ) %>%
-    arrange(id_srn, id_ern)
+    arrange(id_srn, id_ern) %>%
+    rename(
+      SRN_id = id_srn
+        ,`Rsrch. Proj. ID` = id_ern
+    )
 
   id = paste("id_tble_crrnt_srn_xwalk_", id_sffx)
   temp_table =
@@ -18,7 +23,7 @@ mk_tble_crrnt_srn_xwalk = function(data, id_sffx){
     tmp_data
     ,defaultColDef = colDef(footerStyle = list(fontWeight = "bold"), header = mk_special_header)
     ,columns = combined_named_lists(
-      colDef_sticky(cols = c("id_srn", "id_ern"))
+      colDef_sticky(cols = c("SRN ID", "Rsrch. Proj. ID"))
       ,colDef_colWidth_robust(cols = rtrn_cols(tmp_data, "itle"), minWidth = 250)
       ,colDef_colWidth_robust(cols = rtrn_cols(tmp_data, "id_"), maxWidth = 100)
       ,colDef_filter_select(cols = rtrn_cols(tmp_data, words = "zzzz", exclude = T), id = id)

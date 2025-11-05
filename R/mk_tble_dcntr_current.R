@@ -8,14 +8,24 @@ mk_tble_dcntr_current = function(data){
     mutate(research_project_id  = strg_numeric_order(research_project_id , rev = F)) %>%
     arrange(research_project_id ) %>%
     select(
-      research_project_id, project_title, research_category
+      research_project_id
+      ,project_title
+      ,research_category
       ,project_objectives
       ,developer_fisheries_monitoring_plan
-      ,methodology, receptor, location, fixed_or_floating
-      ,windfarm_development_stage, spatial_scale
-      ,funder, additional_funding_entities
-      ,lead_entity, partner_entities
-      ,pi_name, pi_contact_info, project_website
+      ,lead_entity
+      ,partner_entities
+      ,funder
+      ,additional_funding_entities
+      ,methodology
+      ,receptor
+      ,location
+      ,fixed_or_floating
+      ,windfarm_development_stage
+      ,spatial_scale
+      ,pi_name
+      ,pi_contact_info
+      ,project_website
       ,project_start_year
       ,project_end_year) |>
     rename(`Est. End Year` = project_end_year)

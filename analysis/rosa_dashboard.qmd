@@ -60,6 +60,8 @@ tar_load(data_current_pro)
 tar_load(data_current_srn)
 tar_load(data_needed_pro)
 tar_load(data_srn_pro)
+
+
 tar_load(viz_prj_timeline)
 tar_load(viz_proj_location_tree)
 tar_load(viz_tble_crrnt_proj_shrt)
@@ -69,6 +71,10 @@ tar_load(viz_tble_dcntr_def)
 tar_load(viz_tble_dcntr_need)
 tar_load(viz_tble_dcntr_ref)
 tar_load(viz_tble_dcntr_srn)
+
+tar_load(viz_smmry_srn_location_tree)
+tar_load(viz_smmry_srn_funnel)
+tar_load(viz_tble_smmry_srn)
 
 tar_source()
 # source("R/mk_tble_crrnt_srn_xwalk.R")
@@ -97,21 +103,17 @@ bslib::card(
   bslib::card_body(
     shiny::markdown("
 <strong>FishFORWRD | Fish and Fisheries OffshoRe Wind Database</strong><br>
-- FishFORWRD is a catalog of all East Coast <strong>research</strong>, <strong>monitoring efforts</strong>, and stated <strong>research needs</strong> for offshore wind, fish, and fisheries.   
+- FishFORWRD is a catalog of all East Coast <strong>research</strong>, <strong>monitoring efforts</strong>, <strong>programs</strong> and stated <strong>research needs</strong> for offshore wind, fish, and fisheries.   
 - Included are research and monitoring funded specifically to understand offshore wind potential effects on fish and fisheries.   
+- The <strong>Research Gaps Analysis</strong> tab creates a common understanding of progress made and research still needed to understand the impacts of offshore wind on fish and fisheries on the U.S. East Coast.
 - The <strong>objective</strong> of FishFORWRD is to increase awareness of ongoing work, avoid duplication of efforts, and create a common understanding of research needs. This tool is meant for research funders, fisheries and offshore wind researchers, offshore wind developers, and the public.   
 
 
-<strong>How to use this Dashboard</strong><br>
-- <strong>Filter</strong> projects and research needs by location, research category, methodology used, funder and more. 
-- <strong>Download</strong> database information to explore information outside of the webtool
-- <strong>Submit</strong> new projects, new needs, and corrections
-
 <strong>Explanation of Tabs</strong>
 
-<strong>[Research Overview:](#research-overview)</strong> View completed and ongoing projects with high level attributes. This includes funded research and implemented offshore wind developer Fisheries Monitoring Plans.
+<strong>[Research Projects & Needs:](#full-view)</strong> View completed and ongoing projects with high level attributes. This includes funded research and implemented offshore wind developer Fisheries Monitoring Plans. Interact with raw data and download database directly to your local computer. Find term definitions and references.
 
-<strong>[FishFORWRD Full View:](#full-view)</strong> Interact with raw data and download database directly to your local computer. Find term definitions and references.
+<strong>[Research Gaps Analysis:](#rga)</strong> Explore how research and monitoring projects are addressing research needs.
 
 <strong>[Submit Project:](#submit-project)</strong> Submit information to update and improve FishFORWRD.")
   )
@@ -131,7 +133,7 @@ bslib::value_box(
 
 ```{r}
 bslib::value_box(
-  title = "Total Unique Research Categories"
+  title = "Research Categories"
   ,theme = bslib::value_box_theme(bg = "#016FB1", fg = "#e5f0f7")
   ,value = length(unique(data_current_pro$research_category))
     ,full_screen = F
@@ -140,9 +142,9 @@ bslib::value_box(
 
 ```{r}
 bslib::value_box(
-  title = "Total Identified Needs"
+  title = "Total Unique Research Needs"
   ,theme = bslib::value_box_theme(bg = "#016FB1", fg = "#e5f0f7")
-  ,value = nrow(data_needed_pro)
+  ,value = nrow(data_srn_pro)
     ,full_screen = F
 )
 ```
@@ -180,46 +182,12 @@ bslib::value_box(
 ## Row {height="10%"}
 
 ::: cardSpecSmall
-For support, issue reporting, or for features you'd like to see - contact: `info@rosascience.org`\
-This dashboard was last published: `r Sys.Date()` *`Version 2.1.0`*
+For support, issue reporting, or for features you'd like to see - contact: `info@rosascience.org`. This dashboard was last published: `r Sys.Date()` *`Version 2.2.0`*   
+
+Responsible Offshore Science Alliance. (2025). Fish and Fisheries Offshore Wind Research Database (FishFORWRD). Zenodo. *https://doi.org/10.5281/zenodo.17407180*
 :::
 
-# Research Overview {#research-overview orientation="columns" scrolling="false"}
-
-## Column {width="60%"}
-
-### Row {height="10%"}
-
-```{r}
-bslib::card(full_screen = FALSE
-  # height="200px"
-  ,bslib::card_body(
-    shiny::markdown("Find full project information and identified research needs in FishFORWRD Full View tab")))
-```
-
-### Row
-
-```{r}
-#| title: "Snapshot of Ongoing & Completed Research & Monitoring Efforts"
-#| expandable: TRUE
-viz_tble_crrnt_proj_shrt
-```
-
-## Columm_2 {.tabset width="40%"}
-
-```{r}
-#| title: "Project Timelines"
-#| expandable: TRUE
-viz_prj_timeline
-```
-
-```{r}
-#| title: "No. of Projects by Location"
-#| expandable: TRUE
-viz_proj_location_tree
-```
-
-# FishFORWRD Full View {#full-view orientation="rows" scrolling="false"}
+# Research Projects & Needs {#full-view orientation="rows" scrolling="false"}
 
 ##  {.tabset}
 
@@ -233,6 +201,12 @@ viz_tble_dcntr_current
 #| title: Identified Research Needs
 #| expandable: TRUE
 viz_tble_dcntr_need
+```
+
+```{r}
+#| title: Summarized Research Needs
+#| expandable: TRUE
+viz_tble_dcntr_srn
 ```
 
 ```{r}
@@ -253,6 +227,47 @@ viz_tble_dcntr_ref
 ```
 
 ##  {.unnumbered}
+
+# Research Gaps Analysis {#rga orientation="columns" scrolling="false"}
+
+## Columm_2 
+
+```{r}
+#| title: "Summarized Research Needs"
+#| expandable: TRUE
+viz_tble_smmry_srn
+# data_srn_pro %>%
+#   # filter(existing_project_addressing_need_id_number != "NULL") %>%
+#   mk_tble_smmry_srn(data = ., id_sffx = "ern")
+```
+
+
+## Column {width="60%"}
+
+### Row {height="30%"}
+
+```{r}
+bslib::card(
+  bslib::card_body(
+    shiny::markdown("
+This view displays the results of ROSA’s Research Gaps Analysis.    
+- On the left, you’ll find the full list of Summarized Research Needs (SRN) organized by research category. Filter the Score to NOT ADDRESSED to view research gaps. Note: Some SRNs marked as UNDER EXPLORATION may still have unmet needs, such as for specific receptors and locations.
+- Below, you’ll see all Explored Research Needs — needs that are currently being addressed by ongoing or completed projects. Match your SRN of interest on the left to the corresponding SRN on the below to see how specific needs are being explored and by which projects.     
+
+Learn more about the Research Gaps Analysis process <a href='https://www.rosascience.org/resources/fishforwrd/'>here</a> ."
+    )
+  )
+)
+```
+
+### Row
+
+```{r}
+#| title: "Explored Research Needs"
+#| expandable: TRUE
+
+mk_tble_crrnt_srn_xwalk(data_current_srn, id_sffx = "x")
+```
 
 # Submit Project {#submit-project orientation="columns" scrolling="true"}
 

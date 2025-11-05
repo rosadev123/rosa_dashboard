@@ -1,19 +1,23 @@
 mk_tble_smmry_srn = function(data, id_sffx ){
 
   # data = tar_read(data_srn_pro)
-  # data = data_srn_pro %>%
-  #   filter(existing_project_addressing_need_id_number != "NULL")
+  # data = data_srn_pro %>% filter(existing_project_addressing_need_id_number != "NULL")
 
   temp_data = data %>%
     select(
       summarized_research_need_id
       ,research_category
-      ,summary_of_research_need
-      ,research_needs_captured
+      ,summarized_research_need
+      # ,summary_of_research_need
+      # ,research_needs_captured
+      ,data_gap_analysis_score
       # ,count_rn
-      ) %>%
-    rename(summary = summary_of_research_need
-           ,SRN_id = summarized_research_need_id) %>%
+    ) %>%
+    rename(
+      # SRN = summary_of_research_need
+      SRN = summarized_research_need
+      ,SRN_id = summarized_research_need_id
+      ,Score = data_gap_analysis_score) %>%
     mutate(SRN_id = strg_numeric_order(SRN_id, rev = F))
 
   id = paste0("id_tble_smmry_srn_", id_sffx)

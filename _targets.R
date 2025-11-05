@@ -13,6 +13,8 @@ global_package = c("tibble", "tidyverse", "magrittr"
                    ,"bslib","bsicons", "htmltools", "shiny"
                    ,"gauntlet", "gauntletReactable")
 
+# qq = gauntlet::package_load(global_package)
+
 # Set target options:
 tar_option_set(
   packages = global_package # packages that your targets need to run
@@ -62,7 +64,9 @@ list(
     ,here::here(
       "data"
       # ,"Re_ ROSA Dashboard Release Sprint"
-      ,"FishFORWRD v2.1.2_1.7.25.xlsx"
+      # ,"FishFORWRD v2.1.2_1.7.25.xlsx"
+      # ,"FishFORWRD v2.2.0_10.2.25.xlsx"
+      ,"FishFORWRD v2.2.0_10.21.25.xlsx"
     ), format = "file")
   ,tar_target(data_rosa_dbase_list, upload_file_rosa(data_rosa_dbase_file))
   #data_objects_pro=============================================================
@@ -74,6 +78,7 @@ list(
   ,tar_target(data_acro_list_pro, prcss_acro_list(data_rosa_dbase_list))
   ,tar_target(data_srn_pro, prcss_srn(data_rosa_dbase_list))
   ,tar_target(data_current_srn, prcss_current_srn(data_current_pro,data_srn_pro))
+
   #viz_objects==================================================================
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   ##current
@@ -82,17 +87,11 @@ list(
   ,tar_target(viz_proj_location_tree
               ,mk_viz_proj_location_bar(data_current_pro, filter = F,  index = c("location", "research_category")))
   #,tar_target(viz_tble_agg_addrssd_gap, mk_tble_agg_addrssd_gap(data_needProj_gap))
-  ##ern tab---------------------------------------------------------------------
-  # ,tar_target(
-  #   viz_tble_crrnt_srn_xwalk
-  #   ,mk_tble_crrnt_srn_xwalk(data_current_srn, id_sffx = "xx"))
-  # ,tar_target(viz_smmry_srn_funnel, mk_vix_smmry_srn_funnel(data_srn_pro))
-  # ,tar_target(viz_smmry_srn_location_tree, mk_viz_proj_location_bar(data_current_srn, index = c("location", "research_category_srn")))
-  # ,tar_target(
-  #   viz_tble_smmry_srn,
-  #   data_srn_pro %>%
-  #     filter(existing_project_addressing_need_id_number != "NULL") %>%
-  #     mk_tble_smmry_srn(., id_sffx = "reg"))
+  #ern tab---------------------------------------------------------------------
+  ,tar_target(viz_tble_crrnt_srn_xwalk, mk_tble_crrnt_srn_xwalk(data_current_srn, id_sffx = "xx"))
+  ,tar_target(viz_smmry_srn_funnel, mk_vix_smmry_srn_funnel(data_srn_pro))
+  ,tar_target(viz_smmry_srn_location_tree, mk_viz_proj_location_bar(data_current_srn, index = c("location", "research_category_srn")))
+  ,tar_target(viz_tble_smmry_srn, mk_tble_smmry_srn(data = data_srn_pro, id_sffx = "reg"))
   # ,tar_target(viz_tble_needs_proj_shrt, mk_tble_needs_proj_shrt(data_current_needed))
   # ,tar_target(viz_tble_need_anmlgrp, mk_tble_need_anmlgrp(data_current_needed))
   # ,tar_target(viz_viz_unaddressed_needs, mk_viz_unaddressed_needs(data_needProj_gap))
